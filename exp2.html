@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" >
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="description" content="Personal website of Ender Yüksel, PhD in Computer Science, technology leader, experienced in software development, agile, organization design, scrum, product teams, coaching, mentoring, teaching, security, diversity, equity, and inclusion.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Experience - Ender Yüksel, PhD in Computer Science</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FS14VY1ERQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FS14VY1ERQ');
+</script>
+
+<style>
+    .list-items__item-header {
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s;
+    }
+    
+    .list-items__item-header:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    .list-items__item-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .toggle-icon {
+        font-size: 0.8em;
+        transition: transform 0.3s;
+        margin-left: 10px;
+    }
+    
+    .toggle-icon.expanded {
+        transform: rotate(180deg);
+    }
+    
+    .list-items__item-text {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+    }
+    
+    .list-items__item-text.expanded {
+        max-height: 3000px;
+    }
+</style>
+
+</head>
+
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- page wrap
+    ================================================== -->
+    <div id="page" class="s-pagewrap">
+
+        <!-- # site header 
+        ================================================== -->
+        <header class="s-header">
+
+            <div class="row s-header__inner width-sixteen-col">
+
+                <div class="s-header__block">
+                    <div class="s-header__logo">
+                        <a class="logo" href="index.html">
+                            Ender Yüksel, PhD
+                        </a>
+                    </div>
+
+                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+                </div> <!-- end s-header__block -->
+
+                <nav class="s-header__nav">
+    
+                    <ul class="s-header__menu-links">
+                        <li><a href="about.html">About</a></li>
+                        <li class="current"><a href="experience.html">Experience</a></li>
+                        <li><a href=" talks.html">Talks</a></li>
+                        <li>::</li>
+                        <li><a href="publications.html">Academic Publications</li>
+                    </ul> <!-- s-header__menu-links -->
+
+                    <div class="s-header__contact">
+                        <a href="contact.html" class="btn btn--primary s-header__contact-btn">Get in touch</a>                        
+                    </div> <!-- s-header__contact -->
+    
+                </nav> <!-- end s-header__nav -->
+
+            </div> <!-- end s-header__inner -->
+
+        </header> <!-- end s-header -->
+
+        <!-- # site main content
+        ================================================== -->
+        <section id="content" class="s-content">
+
+               <section class="s-pageheader pageheader">
+                    <div class="row">
+                        <div class="column xl-12">
+                            <h1 class="page-title">
+                                <!--span class="page-title__small-type text-pretitle">Experience</span-->
+                                Intensive and Broad Experience
+                            </h1>
+                            
+                        </div>
+                    </div>
+               </section> <!-- pageheader -->  
+
+               <section class="s-pagecontent pagecontent">
+
+                    <div class="row pageintro">
+                        <div class="column xl-6 lg-12">
+                            <h2 class="text-display-title">
+                                <blockquote cite="http://where-i-got-my-info-from.com">
+                                    <p>
+                                        Strong leaders engage their critics and make themselves stronger. Weak leaders silence their critics and make themselves weaker.                                     
+                                    </p>
+                
+                                    <footer>
+                                        <cite>
+                                            <a href="#0">Adam M. Grant, Think Again: The Power of Knowing What You Don't Know</a>
+                                        </cite>
+                                    </footer>
+                
+                                </blockquote>
+                            </h2>
+                        </div>
+                        <div class="column xl-6 lg-12 u-flexitem-x-right">
+                            <p class="lead">
+                                I possess more than two decades of experience in computer science, software engineering, and product development, amongst others.
+                                Below you can find short descriptions of my experience, supported with links to my relevant talks, articles, and other material.
+                            </p>
+                        </div>                       
+                    </div>  <!-- pageintro -->       
+
+                    <div class="row">
+                        <div class="column xl-12 grid-block">             
+                            
+                            <div class="grid-full grid-list-items list-items show-ctr">
+                                
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Agile <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have contributed to one of the largest and most successful agile transformations in Scandinavia, 
+                                        as a first generation Scrum Master in SimCorp. I also had the pleasure to collaborate with precious agile coaches 
+                                        and thought leaders.
+                                        <br><br>
+                                        Possessing both theoretical and practical knowledge and experience in Agile, as well having taken agile roles in practice is one of my superpowers as a senior leader. 
+                                        <br><br>
+                                        I should also mention that I give guest lectures in agile at the top Scandinavian universities, speak at agile conferences, as well as organize and participate in professionals events. 
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>LECTURE and TALK: <a href="talks.html#LECTURE_Safe_Agile" target="_blank">A Safe Journey Towards Agile Value Creation</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Assessing_Agility" target="_blank">Assessing the agility of your prospective employer:
+                                                10 Questions to Ask in Your Next Job Interview</a></li>
+                                            <li>ARTICLE: <a href="https://medium.com/@ender.yuksel/what-can-development-teams-learn-from-copenhagen-buses-5b254896550b" target="_blank">What can development teams learn from Copenhagen buses?</a></li>
+                                            <li>ARTICLE: <a href="https://medium.com/@ender.yuksel/how-to-be-agile-when-writing-your-master-thesis-e31885dc6f02" target="_blank">How to be Agile when writing your Master Thesis</a></li>
+                                            <li>ARTICLE: <a href="https://medium.com/@ender.yuksel/how-we-converted-our-classroom-agile-training-into-a-virtual-interactive-one-f649e9c18228" target="_blank">How we converted our classroom agile training into a virtual interactive one</a></li>
+                                            <li>MEETUP: <a href="https://www.youtube.com/watch?v=WmBx364vnYs" target="_blank">Changing your company culture through agile ways of working (speaker: Maria Ebro Andreasen)</a> </li>
+                                            <li>CERTIFICATE: <a href="https://www.credly.com/badges/4b98d4f9-2183-4d24-982a-ac6ad4f8d009" target="_blank">SAFe Advanced Scrum Master</a> </li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/1541417966999/single-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o" target="_blank">Large Scale Scrum (LeSS) Practitioner</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Artificial Intelligence <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>I took my first AI course in 2002 during my bachelor studies, where I passed with top grade (AA). Following semester, I took Robot technologies course which I also passed with top grade. While I have academic foundation AI, in 2020 I decided to obtain AI certification in Azure to demonstrate my practical abilities. Since 2022, I am in collaboration with machine learning and data science professors in ITU University. Since 2023, I have been advocating and sponsoring the use of AI in my work areas.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Board Membership <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>Apart from my service in European Council of Doctoral Candidates and Junior Researchers (EuroDoc) as one of 
+                                        the two delegates of Denmark, my main experience as a board member comes from the PhD Association of the 
+                                        Technical University of Denmark for more than five years. On top of that, I was elected by the employees of SimCorp 
+                                        as a substitute for the Board of Directors between 2019 and 2022.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Coaching <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        Even in most sophisticated workplaces, one can encounter leaders that try to use Frederick Taylor's 
+                                        mindset from more than 100 years ago, in today's world. Knowledge workers of today, can be lead by better approaches, 
+                                        and coaching is one of the good methods that spans a different way of thinking and approaching to unlocking people's potential.
+                                        I try to use coaching, when leading people while refraining from micromanagement, command&control, and carrot&stick motivation. 
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635478087443" target="_blank">Leading a Coaching Culture</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Diversity, Equity, and Inclusion <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        DEI, and especially inclusion, is a focus area in my work life. 
+                                        Most recently, I have been an active member of the DEI council in SimCorp representing the largest part of the organization: the product development.
+                                        In this role, I had the chance to work closely with Elizabeth Benedict Christensen, PhD and SimCorp CEO Christian Kromann. 
+                                        In addition, I have been actively contributing to both raising awareness, being an ally, as well using metrics to improve DEI.  
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK: <a href="talks.html#TALK_DEI" target="_blank">Embedding DEI in Our Agile Organization at SimCorp:
+                                                An Intersectional Approach</a></li>
+                                            <li>MEETUP: <a href="https://www.youtube.com/watch?v=DdO1ZBaPWQ8" target="_blank">Women in Agile Development Teams (speaker: Aia Sophia Vikkelsø Wimo)</a></li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Efficiency <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>As a Director of Engineering, I have proven track record in increasing the delivery efficiency of my organizations. One dimension that I have been immensely successful is the Cycle Time, which in my context is the number of days needed in order to implement a work item (e.g. a User Story or a Defect-fix) in average. In one organization, I reduced the cycle time from 16 days to 6 days, and in another organization I reduced the cycle time from 14 days to 5 days. Both cases happened gradually over a course of six months.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Employer Branding <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        For more than 10 years, I have been actively helping with employer branding, attending career fairs representing my employers, 
+                                        organizing creative gatherings to build a solid talent pipeline, as well as being active on digital and in person channels 
+                                        regarding employer branding.
+                                        <br><br>
+                                        Since 2024, I am a member of the Employers' Panel of IT University of Copenhagen where together with senior leaders from Denmark's largest employers I am advising IT University.
+                                        </p>
+
+                                        <ul class="list-services">
+                                            
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Growing Individuals and Teams <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have been spending years in growing individuals and teams, and making sure that this long term investment 
+                                        does not get downprioritized against short term wins. 
+                                        <br><br>
+                                        I have had employees that I helped growing into new roles, 
+                                        or promoting in their current roles, as well as preparing them to take leadership positions. 
+                                        <br><br>
+                                        In my opinion, it takes experience, courage, and optimizing for the greater good to help people move (or try) areas that they will perform better and be happier.
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK: <a href="talks.html#TALK_TestingLearningArea" target="_blank">Software Testing Learning Area:  
+                                                SimCorp's long standing solution to support the agile organization</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Cont_Learning" target="_blank">20 Continuous Learning Initiatives for Agile Teams</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Psychology" target="_blank">Minimum Viable Psychology (MVP) for Agile Teams</a></li>
+                                            <li>MEETUP: <a href="https://www.meetup.com/simcorp-agile/events/281894028/" target="_blank">Revealing obligations that lead to TECHNOSTRESS in organizations (speaker: Raluca Stana, PhD)</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Leading Leaders <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have been leading Engineering Managers, as well as team level leaders such as Scrum Masters, Product Owners, and Tech Leads. 
+                                        <br><br>
+                                        I have grown leaders from scratch, as well as helped seasoned leaders towards improving and honing their skills.
+                                        In addition to leading and growing leaders, I also help them in getting experience beyond the borders of the company, by giving them opportunities to join me in different extracurricular activities such as guest lectures, meetups, and touch points with business leaders and frontrunners in IT.
+                                        <br><br>
+                                        Last but not least, I am proud and happy to be a preferred and wanted mentor for leaders outside my organization as well.
+                                          
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>POST: <a href="https://www.linkedin.com/posts/enderyuksel_simcorp-engineeringleadership-globalcollaboration-activity-7206597047314001920-4XyS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o" target="_blank">A LinkedIn post about my current team of leaders: <i>Hygge</i></a></li>
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master's Best Friend!</a></li>
+                                            <li>PODCAST: <a href="talks.html#TALK_DM_podcast" target="_blank">Introducing the Development Manager:
+                                                A Scrum Master's best friend</a> </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Mentoring <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        In my own career, I benefited vastly from being a mentee. Then, when I was ready and had a chance to give back, I also benefited from being a mentor. 
+                                        In particular, my mentorship in SimCorp's Women Leaders Mentoring Programme, and Nova's Mentoring Programme are my mentoring experience that I am most proud of.
+                                        <br><br>
+                                        As of 2025, I mentor three different mentees, including one Manager from SimCorp, one Data Engineer through Women in Tech DK, and one Data Scientist through Greater Copenhagen Career Program. 
+                                    </p>
+
+                                        <ul class="list-services">
+                                            
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Organizational Design <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have built teams from scratch, scaled up from a few software engineers to multiple team product areas (each of which had 3 to 5 teams), and 
+                                        collaborated leaders to restructure organizations in order to be more efficient and better serve the customers.
+                                        <br><br>
+                                        I employ data-driven decision making, focus on outcomes, avoid local optimization (and creating operational risks), and start with the end in mind when it comes to organizational design.
+                                        <br><br>
+                                        I also possess significant practical in various outsorcing models such as onshore outsourcing in Denmark; nearshore outsourcing in Sweden, Poland, and Ukraine; and offshore outsourcing in India and Philippines.
+                                    </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master's Best Friend!</a></li>
+                                            <li>INTERVIEW and PODCAST: <a href="talks.html#PODCAST_HybridWork" target="_blank">Hybrid work, the modern workforce, and beyond</a></li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635452217134" target="_blank">Stanford University - Organizational Analysis</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Project Management <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        Although I am not advocating classical project management with iron triangle (of budget, scope, and time), 
+                                        I value and make use of project management skills. I have helped managing fairly large European research projects, 
+                                        as a postdoctoral researcher, including SENSORIA, SESAMO, MT-LAB, and IDEA4CPS projects
+                                        (more information available on my LinkedIn profile). In the software industry, I used agile approaches to deliver 
+                                        value faster and more frequently in bpth projects and product development.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Recruitment <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                            I recruited more than 40 professionals in roles spanning Engineering Managers, Software Engineers, Test Analysts, Scrum Masters, Product Owners, DevOps Engineers, Data Engineers, Financial Analysts, Technical Writers, and Student Assistants. I recruited full time employees, part-time employees, and contractors. I recruited in Denmark, India, Poland, Sweden, and Ukraine. I tried to innovate and refine my recruitment approach, and I have presented about this in conferences. 
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_Recruitment" target="_blank">What have we learned from recruiting and onboarding for agile teams?</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Talent_Acquisition" target="_blank">Talent Acquisition - How does it look on the other side of the table?</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Assessing_Agility" target="_blank">Assessing the agility of your prospective employer:
+                                                10 Questions to Ask in Your Next Job Interview</a></li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Security <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        Majority of my academic work and scientific publications were on security. While I did not work in the industry on this topic 
+                                        (with a remarkable exception of working for Poul Otto Schousboe for a short time when he was heading the security department of Danske Bank) I kept 
+                                        my academic interest and I have been invited to security-related Master Thesis defenses and project works regularly.
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>MEETUP: <a href="https://www.youtube.com/watch?v=dkrGAtpgcZw" target="_blank">Secure Development Lifecycle and Fixing Vulnerabilities with Linters (speakers: Irina Kostina and Willard Rafnsson, PhD)</a> </li>
+                                            <li>PUBLICATIONS: <a href="publications.html" target="_blank">Most of my academic publications, as well as my BSc, MSc, and PhD thesis are highly related to security</a></li>
+                                            <li>INTERVIEW: <a href="https://videnskab.dk/teknologi/dine-husholdningsapparater-kan-hackes" target="_blank">Dine husholdningsapparater kan hackes (in Danish)</a> </li>
+                                            <li>INTERVIEW: <a href="https://sciencenordic.com/consumption-denmark-energy/your-household-appliances-can-be-hacked/1375343" target="_blank">Your household appliances can be hacked</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header" onclick="toggleItem(this)">
+                                        <h3 class="list-items__item-title">Software Development <span class="toggle-icon">▼</span></h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        For computer science research, I have developed software tools in different programming languages such as Java, C, C++, C#, MatLab, Perl, Visual Basic. 
+                                        As a professional software engineer, I mainly worked with C#, though I also worked with APL, PL/I, PL/B, and PowerShell. For personal use and out of 
+                                        curiosity I also used HTML, CSS, JavaScript, PHP; as well as ML. Although I haven't been professionally coding since I moved to leadership roles, I keep myself up to date and 
+                                        acquired Azure, and Azure AI certifications.
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>CONFERENCE PAPER: <a href="https://ieeexplore.ieee.org/document/6249271?tp=&arnumber=6249271&contentType=Conference%20Publications&sortType%3Dasc_p_Sequence%26filter%3DAND(p_IS_Number:6249257)%26rowsPerPage%3D100=" target="_blank">Key Update Assistant for resource-constrained networks</a> </li>
+                                            <li>WORKSHOP PAPER: <a href="https://iee
