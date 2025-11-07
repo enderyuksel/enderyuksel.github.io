@@ -35,44 +35,146 @@
 
   gtag('config', 'G-FS14VY1ERQ');
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".grid-list-items");
+    if (!container) return;
 
+    // Create button bar
+    const btnBar = document.createElement("div");
+    btnBar.className = "xp-accordion-controls";
+
+    const expandBtn = document.createElement("button");
+    expandBtn.textContent = "Expand all";
+    expandBtn.className = "xp-accordion-btn xp-expand-all";
+
+    const collapseBtn = document.createElement("button");
+    collapseBtn.textContent = "Collapse all";
+    collapseBtn.className = "xp-accordion-btn xp-collapse-all";
+
+    btnBar.appendChild(expandBtn);
+    btnBar.appendChild(collapseBtn);
+    container.before(btnBar);
+
+    // Grab the items
+    const items = [...container.querySelectorAll(".list-items__item")];
+
+    // Prepare sortable list
+    const mapped = items.map(el => {
+        const title = el.querySelector(".list-items__item-title")?.innerText.trim() || "";
+        return { title, el };
+    });
+
+    // Sort alphabetically
+    mapped.sort((a, b) => a.title.localeCompare(b.title));
+
+    // Clear container
+    container.innerHTML = "";
+
+    // Build accordion items
+    mapped.forEach(({ title, el }) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "xp-accordion-item";
+
+        const header = document.createElement("button");
+        header.className = "xp-accordion-header";
+        header.setAttribute("type", "button");
+        header.textContent = title;
+
+        const content = document.createElement("div");
+        content.className = "xp-accordion-content";
+
+        const originalHeader = el.querySelector(".list-items__item-header");
+        if (originalHeader) originalHeader.remove();
+
+        content.appendChild(el);
+        wrapper.appendChild(header);
+        wrapper.appendChild(content);
+        container.appendChild(wrapper);
+    });
+
+    // Animation logic
+    function toggleItem(header) {
+        const content = header.nextElementSibling;
+        const isOpen = header.classList.contains("open");
+
+        if (isOpen) {
+            content.style.height = content.scrollHeight + "px";
+            requestAnimationFrame(() => {
+                content.style.height = "0px";
+            });
+        } else {
+            content.style.height = content.scrollHeight + "px";
+        }
+
+        header.classList.toggle("open");
+    }
+
+    document.querySelectorAll(".xp-accordion-header").forEach(header => {
+        header.addEventListener("click", () => toggleItem(header));
+    });
+
+    // Expand all
+    expandBtn.addEventListener("click", () => {
+        document.querySelectorAll(".xp-accordion-header").forEach(header => {
+            if (!header.classList.contains("open")) toggleItem(header);
+        });
+    });
+
+    // Collapse all
+    collapseBtn.addEventListener("click", () => {
+        document.querySelectorAll(".xp-accordion-header").forEach(header => {
+            if (header.classList.contains("open")) toggleItem(header);
+        });
+    });
+});
+</script>
 <style>
-    .list-items__item-header {
-        cursor: pointer;
-        user-select: none;
-        transition: background-color 0.2s;
-    }
-    
-    .list-items__item-header:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-    }
-    
-    .list-items__item-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .toggle-icon {
-        font-size: 0.8em;
-        transition: transform 0.3s;
-        margin-left: 10px;
-    }
-    
-    .toggle-icon.expanded {
-        transform: rotate(180deg);
-    }
-    
-    .list-items__item-text {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-out;
-    }
-    
-    .list-items__item-text.expanded {
-        max-height: 3000px;
-    }
+/* Button bar */
+.xp-accordion-controls {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons: no font styling, no colors */
+.xp-accordion-btn {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: none;
+    border-radius: 4px;
+}
+
+/* Accordion container */
+.xp-accordion-item {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Headers: removing all font/weight/size/color changes */
+.xp-accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.6rem 0;
+    cursor: pointer;
+}
+
+/* “Open” state only toggles class, no styling */
+.xp-accordion-header.open {
+}
+
+/* Actual animated content area */
+.xp-accordion-content {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+    padding-left: 0.2rem;
+}
 </style>
+
 
 </head>
 
@@ -180,8 +282,56 @@
                             <div class="grid-full grid-list-items list-items show-ctr">
                                 
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Agile <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Leading Leaders</h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have been leading Engineering Managers, as well as team level leaders such as Scrum Masters, Product Owners, and Tech Leads. 
+                                        <br><br>
+                                        I have grown leaders from scratch, as well as helped seasoned leaders towards improving and honing their skills.
+                                        In addition to leading and growing leaders, I also help them in getting experience beyond the borders of the company, by giving them opportunities to join me in different extracurricular activities such as guest lectures, meetups, and touch points with business leaders and frontrunners in IT.
+                                        <br><br>
+                                        Last but not least, I am proud and happy to be a preferred and wanted mentor for leaders outside my organization as well.
+                                          
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>POST: <a href="https://www.linkedin.com/posts/enderyuksel_simcorp-engineeringleadership-globalcollaboration-activity-7206597047314001920-4XyS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o" target="_blank">A LinkedIn post about my current team of leaders: <i>Hygge</i></a></li>
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master’s Best Friend!</a></li>
+                                            <li>PODCAST: <a href="talks.html#TALK_DM_podcast" target="_blank">Introducing the Development Manager:
+                                                A Scrum Master's best friend</a> </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Growing Individuals and Teams</h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                        I have been spending years in growing individuals and teams, and making sure that this long term investment 
+                                        does not get downprioritized against short term wins. 
+                                        <br><br>
+                                        I have had employees that I helped growing into new roles, 
+                                        or promoting in their current roles, as well as preparing them to take leadership positions. 
+                                        <br><br>
+                                        In my opinion, it takes experience, courage, and optimizing for the greater good to help people move (or try) areas that they will perform better and be happier.
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK: <a href="talks.html#TALK_TestingLearningArea" target="_blank">Software Testing Learning Area:  
+                                                SimCorp's long standing solution to support the agile organization</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Cont_Learning" target="_blank">20 Continuous Learning Initiatives for Agile Teams</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Psychology" target="_blank">Minimum Viable Psychology (MVP) for Agile Teams</a></li>
+                                            <li>MEETUP: <a href="https://www.meetup.com/simcorp-agile/events/281894028/" target="_blank">Revealing obligations that lead to TECHNOSTRESS in organizations (speaker: Raluca Stana, PhD)</a> </li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Agile</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
@@ -207,59 +357,47 @@
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Artificial Intelligence <span class="toggle-icon">▼</span></h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>I took my first AI course in 2002 during my bachelor studies, where I passed with top grade (AA). Following semester, I took Robot technologies course which I also passed with top grade. While I have academic foundation AI, in 2020 I decided to obtain AI certification in Azure to demonstrate my practical abilities. Since 2022, I am in collaboration with machine learning and data science professors in ITU University. Since 2023, I have been advocating and sponsoring the use of AI in my work areas.
-                                        </p>
-
-                                        <ul class="list-services">
-
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Board Membership <span class="toggle-icon">▼</span></h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>Apart from my service in European Council of Doctoral Candidates and Junior Researchers (EuroDoc) as one of 
-                                        the two delegates of Denmark, my main experience as a board member comes from the PhD Association of the 
-                                        Technical University of Denmark for more than five years. On top of that, I was elected by the employees of SimCorp 
-                                        as a substitute for the Board of Directors between 2019 and 2022.
-                                        </p>
-
-                                        <ul class="list-services">
-
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Coaching <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Organizational Design</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
-                                        Even in most sophisticated workplaces, one can encounter leaders that try to use Frederick Taylor's 
-                                        mindset from more than 100 years ago, in today's world. Knowledge workers of today, can be lead by better approaches, 
-                                        and coaching is one of the good methods that spans a different way of thinking and approaching to unlocking people's potential.
-                                        I try to use coaching, when leading people while refraining from micromanagement, command&control, and carrot&stick motivation. 
-                                        </p>
+                                        I have built teams from scratch, scaled up from a few software engineers to multiple team product areas (each of which had 3 to 5 teams), and 
+                                        collaborated leaders to restructure organizations in order to be more efficient and better serve the customers.
+                                        <br><br>
+                                        I employ data-driven decision making, focus on outcomes, avoid local optimization (and creating operational risks), and start with the end in mind when it comes to organizational design.
+                                        <br><br>
+                                        I also possess significant practical in various outsorcing models such as onshore outsourcing in Denmark; nearshore outsourcing in Sweden, Poland, and Ukraine; and offshore outsourcing in India and Philippines.
+                                    </p>
 
                                         <ul class="list-services">
-                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635478087443" target="_blank">Leading a Coaching Culture</a> </li>
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master’s Best Friend!</a></li>
+                                            <li>INTERVIEW and PODCAST: <a href="talks.html#PODCAST_HybridWork" target="_blank">Hybrid work, the modern workforce, and beyond</a></li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635452217134" target="_blank">Stanford University - Organizational Analysis</a> </li>
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Diversity, Equity, and Inclusion <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Recruitment</h3>
+                                    </div>
+                                    <div class="list-items__item-text">
+                                        <p>
+                                            I recruited more than 40 professionals in roles spanning Engineering Managers, Software Engineers, Test Analysts, Scrum Masters, Product Owners, DevOps Engineers, Data Engineers, Financial Analysts, Technical Writers, and Student Assistants. I recruited full time employees, part-time employees, and contractors. I recruited in Denmark, India, Poland, Sweden, and Ukraine. I tried to innovate and refine my recruitment approach, and I have presented about this in conferences. 
+                                        </p>
+
+                                        <ul class="list-services">
+                                            <li>TALK and REPORT: <a href="talks.html#TALK_Recruitment" target="_blank">What have we learned from recruiting and onboarding for agile teams?</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Talent_Acquisition" target="_blank">Talent Acquisition - How does it look on the other side of the table?</a></li>
+                                            <li>TALK: <a href="talks.html#TALK_Assessing_Agility" target="_blank">Assessing the agility of your prospective employer:
+                                                10 Questions to Ask in Your Next Job Interview</a></li>
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Diversity, Equity, and Inclusion</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
@@ -276,24 +414,9 @@
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Efficiency <span class="toggle-icon">▼</span></h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>As a Director of Engineering, I have proven track record in increasing the delivery efficiency of my organizations. One dimension that I have been immensely successful is the Cycle Time, which in my context is the number of days needed in order to implement a work item (e.g. a User Story or a Defect-fix) in average. In one organization, I reduced the cycle time from 16 days to 6 days, and in another organization I reduced the cycle time from 14 days to 5 days. Both cases happened gradually over a course of six months.
-                                        </p>
-
-                                        <ul class="list-services">
-
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Employer Branding <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Employer Branding</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
@@ -309,60 +432,26 @@
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Growing Individuals and Teams <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Coaching</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
-                                        I have been spending years in growing individuals and teams, and making sure that this long term investment 
-                                        does not get downprioritized against short term wins. 
-                                        <br><br>
-                                        I have had employees that I helped growing into new roles, 
-                                        or promoting in their current roles, as well as preparing them to take leadership positions. 
-                                        <br><br>
-                                        In my opinion, it takes experience, courage, and optimizing for the greater good to help people move (or try) areas that they will perform better and be happier.
+                                        Even in most sophisticated workplaces, one can encounter leaders that try to use Frederick Taylor's 
+                                        mindset from more than 100 years ago, in today's world. Knowledge workers of today, can be lead by better approaches, 
+                                        and coaching is one of the good methods that spans a different way of thinking and approaching to unlocking people's potential.
+                                        I try to use coaching, when leading people while refraining from micromanagement, command&control, and carrot&stick motivation. 
                                         </p>
 
                                         <ul class="list-services">
-                                            <li>TALK: <a href="talks.html#TALK_TestingLearningArea" target="_blank">Software Testing Learning Area:  
-                                                SimCorp's long standing solution to support the agile organization</a></li>
-                                            <li>TALK: <a href="talks.html#TALK_Cont_Learning" target="_blank">20 Continuous Learning Initiatives for Agile Teams</a></li>
-                                            <li>TALK: <a href="talks.html#TALK_Psychology" target="_blank">Minimum Viable Psychology (MVP) for Agile Teams</a></li>
-                                            <li>MEETUP: <a href="https://www.meetup.com/simcorp-agile/events/281894028/" target="_blank">Revealing obligations that lead to TECHNOSTRESS in organizations (speaker: Raluca Stana, PhD)</a> </li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635478087443" target="_blank">Leading a Coaching Culture</a> </li>
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Leading Leaders <span class="toggle-icon">▼</span></h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        I have been leading Engineering Managers, as well as team level leaders such as Scrum Masters, Product Owners, and Tech Leads. 
-                                        <br><br>
-                                        I have grown leaders from scratch, as well as helped seasoned leaders towards improving and honing their skills.
-                                        In addition to leading and growing leaders, I also help them in getting experience beyond the borders of the company, by giving them opportunities to join me in different extracurricular activities such as guest lectures, meetups, and touch points with business leaders and frontrunners in IT.
-                                        <br><br>
-                                        Last but not least, I am proud and happy to be a preferred and wanted mentor for leaders outside my organization as well.
-                                          
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>POST: <a href="https://www.linkedin.com/posts/enderyuksel_simcorp-engineeringleadership-globalcollaboration-activity-7206597047314001920-4XyS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o" target="_blank">A LinkedIn post about my current team of leaders: <i>Hygge</i></a></li>
-                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master's Best Friend!</a></li>
-                                            <li>PODCAST: <a href="talks.html#TALK_DM_podcast" target="_blank">Introducing the Development Manager:
-                                                A Scrum Master's best friend</a> </li>
-                                            
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Mentoring <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Mentoring</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
@@ -377,69 +466,51 @@
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Organizational Design <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Teaching</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
-                                        I have built teams from scratch, scaled up from a few software engineers to multiple team product areas (each of which had 3 to 5 teams), and 
-                                        collaborated leaders to restructure organizations in order to be more efficient and better serve the customers.
+                                            I am currently teaching a course in the 𝘔𝘚𝘤 𝘪𝘯 𝘉𝘶𝘴𝘪𝘯𝘦𝘴𝘴 𝘈𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘵𝘪𝘰𝘯 𝘢𝘯𝘥 𝘋𝘪𝘨𝘪𝘵𝘢𝘭 𝘉𝘶𝘴𝘪𝘯𝘦𝘴𝘴 program of Copenhagen Business School.
+                                            <br><br>
+                                        Between 2004 and 2012, I taught BSc and MSc level computer science and software engineering courses in Denmark and Turkey. 
+                                        Afterwards, I also did teaching for professionals such as Coded User Interface Testing in Danske Bank, and Agile courses in SimCorp both in person and virtually.
                                         <br><br>
-                                        I employ data-driven decision making, focus on outcomes, avoid local optimization (and creating operational risks), and start with the end in mind when it comes to organizational design.
-                                        <br><br>
-                                        I also possess significant practical in various outsorcing models such as onshore outsourcing in Denmark; nearshore outsourcing in Sweden, Poland, and Ukraine; and offshore outsourcing in India and Philippines.
+                                        I am still being invited for guest lectures, and I always enjoy sharing my experience with students.
                                     </p>
 
                                         <ul class="list-services">
-                                            <li>TALK and REPORT: <a href="talks.html#TALK_DM" target="_blank">Development Manager: A Scrum Master's Best Friend!</a></li>
-                                            <li>INTERVIEW and PODCAST: <a href="talks.html#PODCAST_HybridWork" target="_blank">Hybrid work, the modern workforce, and beyond</a></li>
-                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635452217134" target="_blank">Stanford University - Organizational Analysis</a> </li>
+                                            <li>VIDEO: <a href="https://www.youtube.com/watch?v=ITybRtv6n0Y&t=4345s" target="_blank">Here is a sample lecture recorsing from my CBS course in the 𝘔𝘚𝘤 𝘪𝘯 𝘉𝘶𝘴𝘪𝘯𝘦𝘴𝘴 𝘈𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘵𝘪𝘰𝘯 𝘢𝘯𝘥 𝘋𝘪𝘨𝘪𝘵𝘢𝘭 𝘉𝘶𝘴𝘪𝘯𝘦𝘴𝘴 program</a></li>
+                                            <li>POST: <a href="https://www.linkedin.com/posts/enderyuksel_while-i-am-passionate-about-solving-business-activity-7265482373675294722-13yQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o" target="_blank">A LinkedIn post about a recent guest lecture</a></li>
+                                            <li>ARTICLE: <a href="https://medium.com/@ender.yuksel/how-we-converted-our-classroom-agile-training-into-a-virtual-interactive-one-f649e9c18228" target="_blank">How we converted our classroom agile training into a virtual interactive one</a></li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635506193967" target="_blank">Training from the back of the room</a> </li>
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Project Management <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Software Development</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
-                                        Although I am not advocating classical project management with iron triangle (of budget, scope, and time), 
-                                        I value and make use of project management skills. I have helped managing fairly large European research projects, 
-                                        as a postdoctoral researcher, including SENSORIA, SESAMO, MT-LAB, and IDEA4CPS projects
-                                        (more information available on my LinkedIn profile). In the software industry, I used agile approaches to deliver 
-                                        value faster and more frequently in bpth projects and product development.
+                                        For computer science research, I have developed software tools in different programming languages such as Java, C, C++, C#, MatLab, Perl, Visual Basic. 
+                                        As a professional software engineer, I mainly worked with C#, though I also worked with APL, PL/I, PL/B, and PowerShell. For personal use and out of 
+                                        curiosity I also used HTML, CSS, JavaScript, PHP; as well as ML. Although I haven't been professionally coding since I moved to leadership roles, I keep myself up to date and 
+                                        acquired Azure, and Azure AI certifications.
                                         </p>
 
                                         <ul class="list-services">
-
+                                            <li>CONFERENCE PAPER: <a href="https://ieeexplore.ieee.org/document/6249271?tp=&arnumber=6249271&contentType=Conference%20Publications&sortType%3Dasc_p_Sequence%26filter%3DAND(p_IS_Number:6249257)%26rowsPerPage%3D100=" target="_blank">Key Update Assistant for resource-constrained networks</a> </li>
+                                            <li>WORKSHOP PAPER: <a href="https://ieeexplore.ieee.org/document/6249411?tp=&arnumber=6249411&contentType=Conference%20Publications&sortType%3Dasc_p_Sequence%26filter%3DAND(p_IS_Number:6249257)%26pageNumber%3D2%26rowsPerPage%3D100=" target="_blank">LBTool: A stochastic toolkit for leave-based key updates</a> </li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635451892324" target="_blank">Microsoft Azure Fundamentals</a> </li>
+                                            <li>CERTIFICATE: <a href="https://www.linkedin.com/in/enderyuksel/overlay/experience/1675416206/multiple-media-viewer/?profileId=ACoAAABdKEwB6tXHIFPYGrH0z-bdFAzczmSs69o&treasuryMediaId=1635478087443" target="_blank">Microsoft Azure AI Fundamentals</a> </li>
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Recruitment <span class="toggle-icon">▼</span></h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                            I recruited more than 40 professionals in roles spanning Engineering Managers, Software Engineers, Test Analysts, Scrum Masters, Product Owners, DevOps Engineers, Data Engineers, Financial Analysts, Technical Writers, and Student Assistants. I recruited full time employees, part-time employees, and contractors. I recruited in Denmark, India, Poland, Sweden, and Ukraine. I tried to innovate and refine my recruitment approach, and I have presented about this in conferences. 
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>TALK and REPORT: <a href="talks.html#TALK_Recruitment" target="_blank">What have we learned from recruiting and onboarding for agile teams?</a></li>
-                                            <li>TALK: <a href="talks.html#TALK_Talent_Acquisition" target="_blank">Talent Acquisition - How does it look on the other side of the table?</a></li>
-                                            <li>TALK: <a href="talks.html#TALK_Assessing_Agility" target="_blank">Assessing the agility of your prospective employer:
-                                                10 Questions to Ask in Your Next Job Interview</a></li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Security <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Security</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
@@ -456,19 +527,187 @@
                                         </ul>
                                     </div>
                                 </div> <!-- end list-items__item -->
-
                                 <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header" onclick="toggleItem(this)">
-                                        <h3 class="list-items__item-title">Software Development <span class="toggle-icon">▼</span></h3>
+                                    <div class="list-items__item-header">
+                                        <h3 class="list-items__item-title">Project Management</h3>
                                     </div>
                                     <div class="list-items__item-text">
                                         <p>
-                                        For computer science research, I have developed software tools in different programming languages such as Java, C, C++, C#, MatLab, Perl, Visual Basic. 
-                                        As a professional software engineer, I mainly worked with C#, though I also worked with APL, PL/I, PL/B, and PowerShell. For personal use and out of 
-                                        curiosity I also used HTML, CSS, JavaScript, PHP; as well as ML. Although I haven't been professionally coding since I moved to leadership roles, I keep myself up to date and 
-                                        acquired Azure, and Azure AI certifications.
+                                        Although I am not advocating classical project management with iron triangle (of budget, scope, and time), 
+                                        I value and make use of project management skills. I have helped managing fairly large European research projects, 
+                                        as a postdoctoral researcher, including SENSORIA, SESAMO, MT-LAB, and IDEA4CPS projects
+                                        (more information available on my LinkedIn profile). In the software industry, I used agile approaches to deliver 
+                                        value faster and more frequently in bpth projects and product development.
                                         </p>
 
                                         <ul class="list-services">
-                                            <li>CONFERENCE PAPER: <a href="https://ieeexplore.ieee.org/document/6249271?tp=&arnumber=6249271&contentType=Conference%20Publications&sortType%3Dasc_p_Sequence%26filter%3DAND(p_IS_Number:6249257)%26rowsPerPage%3D100=" target="_blank">Key Update Assistant for resource-constrained networks</a> </li>
-                                            <li>WORKSHOP PAPER: <a href="https://iee
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header"><h3 class="list-items__item-title">Board Membership</h3></div>
+                                    <div class="list-items__item-text">
+                                        <p>Apart from my service in European Council of Doctoral Candidates and Junior Researchers (EuroDoc) as one of 
+                                        the two delegates of Denmark, my main experience as a board member comes from the PhD Association of the 
+                                        Technical University of Denmark for more than five years. On top of that, I was elected by the employees of SimCorp 
+                                        as a substitute for the Board of Directors between 2019 and 2022.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header"><h3 class="list-items__item-title">Working with C-level Executives</h3></div>
+                                    <div class="list-items__item-text">
+                                        <p>During my career, I had many opportunities to work closely with C-level executives. To exemplify: I worked with SimCorp's former CTO T. Hejlsberg on the top priority project of lifting the flagship product to the cloud; I worked with SimCorp's former CEO C. Kromann on the Diversity and Inclusion council where I represented the largest part of the company: the product division; and I worked closely with Danske Bank's former CISO P. Schousboe on cyber security.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header"><h3 class="list-items__item-title">Artificial Intelligence</h3></div>
+                                    <div class="list-items__item-text">
+                                        <p>I took my first AI course in 2002 during my bachelor studies, where I passed with top grade (AA). Following semester, I took Robot technologies course which I also passed with top grade. While I have academic foundation AI, in 2020 I decided to obtain AI certification in Azure to demonstrate my practical abilities. Since 2022, I am in collaboration with machine learning and data science professors in ITU University. Since 2023, I have been advocating and sponsoring the use of AI in my work areas.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                                <div class="grid-list-items__item list-items__item">
+                                    <div class="list-items__item-header"><h3 class="list-items__item-title">Efficiency</h3></div>
+                                    <div class="list-items__item-text">
+                                        <p>As a Director of Engineering, I have proven track record in increasing the delivery efficiency of my organizations. One dimension that I have been immensely successful is the Cycle Time, which in my context is the number of days needed in order to implement a work item (e.g. a User Story or a Defect-fix) in average. In one organization, I reduced the cycle time from 16 days to 6 days, and in another organization I reduced the cycle time from 14 days to 5 days. Both cases happened gradually over a course of six months.
+                                        </p>
+
+                                        <ul class="list-services">
+
+                                        </ul>
+                                    </div>
+                                </div> <!-- end list-items__item -->
+                            </div> <!-- grid-list-items -->
+                           
+
+                        </div> <!-- end grid-block-->
+                    </div> <!-- end row -->
+
+               </section> <!-- pagecontent -->
+
+
+
+        </section> <!-- s-content-->
+
+
+
+
+        
+ <!-- # footer 
+        ================================================== -->
+        <footer class="s-footer">
+            <div class="row s-footer__content">
+                <div class="column xl-6 lg-6 md-12 s-footer__block s-footer__about">                    
+                    <h3>A little note on the history of my personal website!                    </h3>
+                    <p>
+                        I have been maintaining my website since 1998, and 2023 marks 25 years of my personal website. Below is a chronological hosting history:
+                        <ul>
+                            <li>[1998-1999] <mark>8m.com</mark>                     
+                                my first personal website, I built as a high school student</li>
+                            <li>[1999-2003] <mark>itu.edu.tr</mark>                    
+                                as an undergraduate student at ITU</li>
+                            <li>[2003-2007] <mark>cs.itu.edu.tr</mark>             
+                                as a research assistant at ITU</li>
+                            <li>[2007-2011] <mark>dtu.dk</mark>                        
+                                as a PhD student at DTU</li>
+                            <li>[2011-2013] <mark>pbworks.com</mark>             
+                                as a postdoc at DTU</li>
+                            <li>[2013 - 2023] <mark>sites.google.com</mark> 
+                                 during my time working for the financial industry</li>
+                            <li>[2023 - present] <mark>github.io</mark> 
+                                    My website's latest home</li>
+                            
+                        
+                        </ul>
+                    </p>               
+                </div>                
+                <div class="column xl-3 lg-6 md-12 s-footer__block s-footer__site-links">
+                    <h3>Site Links</h3>
+                    <ul class="link-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href=" talks.html">Talks</a></li>
+                        <li><a href="publications.html">Academic Publications</a></li>
+                        <li><a href="contact.html">Contact</a></li>  
+                         
+                    </ul>
+                </div>
+                <div class="column xl-3 lg-6 md-12 tab-12 s-footer__block s-footer__newsletter">
+                    <h3>Contact</h3>
+                    <div class="s-header__contact">
+                        <a href="contact.html" class="btn btn--primary s-header__contact-btn">Get in touch</a>                        
+                    </div> <!-- s-header__contact -->
+                    <br>
+                    <ul class="s-footer__social social-list">
+                        <li>
+                            <a href="https://www.linkedin.com/in/enderyuksel/" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>                                        
+                                <span class="u-screen-reader-text">LinkedIn</span>
+                            </a>
+                        </li>         
+                        <li>
+                            <a href="https://www.youtube.com/@enderyuksel" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"> <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/> </svg>
+                                <span class="u-screen-reader-text">YouTube</span>
+                            </a>
+                        </li>               
+                        <li>
+                            <a href="https://www.goodreads.com/user/show/45724348-ender-yuksel" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.43 23.995c-3.608-.208-6.274-2.077-6.448-5.078.695.007 1.375-.013 2.07-.006.224 1.342 1.065 2.43 2.683 3.026 1.583.496 3.737.46 5.082-.174 1.351-.636 2.145-1.822 2.503-3.577.212-1.042.236-1.734.231-2.92l-.005-1.631h-.059c-1.245 2.564-3.315 3.53-5.59 3.475-5.74-.054-7.68-4.534-7.528-8.606.01-5.241 3.22-8.537 7.557-8.495 2.354-.14 4.605 1.362 5.554 3.37l.059.002.002-2.918 2.099.004-.002 15.717c-.193 7.04-4.376 7.89-8.209 7.811zm6.1-15.633c-.096-3.26-1.601-6.62-5.503-6.645-3.954-.017-5.625 3.592-5.604 6.85-.013 3.439 1.643 6.305 4.703 6.762 4.532.591 6.551-3.411 6.404-6.967z"/></svg>
+                                <span class="u-screen-reader-text">Goodreads</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/enderyx" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
+                                <span class="u-screen-reader-text">Twitter</span>
+                            </a>
+                        </li>                    </ul> <!-- end s-footer__social -->
+                </div>
+            </div>    
+            
+            <div class="row s-footer__bottom">
+                <div class="column xl-6 lg-12">
+
+                </div>
+                <div class="column xl-6 lg-12">
+                    <p class="ss-copyright">
+                        <span>© Copyright Ender Yüksel 1998 - 2025</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </p>
+                </div>
+
+                <div class="ss-go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">&lt;!--!  Atomicons Free 1.00 by @atisalab License - https://atomicons.com/license/ (Icons: CC BY 4.0) Copyright 2021 Atomicons --&gt;<polyline points="17 11 12 6 7 11"></polyline><line x1="12" y1="18" x2="12" y2="6"></line></svg>
+                    </a>
+                </div> <!-- end ss-go-top -->
+            </div>
+            
+        </footer> <!-- end s-footer -->
+
+    </div> <!-- end page-wrap -->
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
